@@ -1,0 +1,53 @@
+service: group18-serverless-transactions-1
+
+frameworkVersion: "2.46.0"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-south-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:ap-south-1:429937773353:table/transactions-group18"
+
+
+functions:
+
+  get:
+    handler: transactions/get.get
+    events:
+      - http:
+          path: transactions/{id}
+          method: get
+          cors: true
+
+  post:
+    handler: transactions/create.create
+    events:
+      - http:
+          path: transactions
+          method: post
+          cors: true
+
+  delete:
+    handler: transactions/delete.delete
+    events:
+      - http:
+          path: transactions/{id}
+          method: delete
+          cors: true
+
+  list:
+    handler: transactions/list.list
+    events:
+      - http:
+          path: transactions
+          method: get
+          cors: true

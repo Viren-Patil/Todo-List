@@ -1,0 +1,8 @@
+POST https://22w20af4bi.execute-api.ap-south-1.amazonaws.com/dev/transactions
+Content-Type: application/json
+
+{
+    "cust_id" : "2",
+    "cust_name" : "Saurav",
+    "amt": "1300"
+}

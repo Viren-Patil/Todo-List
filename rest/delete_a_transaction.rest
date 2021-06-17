@@ -1,0 +1,2 @@
+DELETE https://mzn10bkhf3.execute-api.ap-south-1.amazonaws.com/dev/transactions/2
+Content-Type: application/json
